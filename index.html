@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Project – Contact View</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  font-family:Calibri, Arial, sans-serif;
+  background:#F4F6F8;
+  color:#0F2D56;
+}
+.page-wrap{
+  max-width:1200px;
+  margin:30px auto;
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+
+/* Header */
+.header{
+  background:#17345C;
+  color:#fff;
+  padding:18px;
+  font-size:18px;
+  font-weight:600;
+  text-align:center;
+}
+
+/* Project Header */
+.project-header{
+  padding:24px 28px;
+  border-bottom:1px solid #E5E7EB;
+}
+.project-title{
+  font-size:22px;
+  font-weight:700;
+}
+.project-meta{
+  font-size:14px;
+  color:#6B7280;
+  margin-top:4px;
+}
+.project-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:18px;
+}
+.meta-block{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.meta-block strong{
+  display:block;
+  font-size:13px;
+  color:#000;
+}
+.avatar{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#CBD5E1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:#17345C;
+}
+
+/* Tabs */
+.tabs{
+  display:flex;
+  border-bottom:1px solid #E5E7EB;
+  background:#FAFBFC;
+}
+.tab{
+  padding:14px 20px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  color:#6B7280;
+}
+.tab.active{
+  color:#0F2D56;
+  border-bottom:3px solid #0F2D56;
+  background:#fff;
+}
+
+/* Sections */
+.section{
+  display:none;
+  padding:24px 28px;
+}
+.section.active{display:block}
+
+/* Tasks */
+.task-row{
+  display:flex;
+  justify-content:space-between;
+  padding:12px 0;
+  border-bottom:1px solid #E5E7EB;
+  font-size:14px;
+}
+.badge{
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+}
+.queue{background:#EEF2FF;color:#3730A3}
+.started{background:#FEF3C7;color:#92400E}
+.completed{background:#DCFCE7;color:#166534}
+.paused{background:#FEE2E2;color:#991B1B}
+
+/* Documents */
+.doc-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  padding:12px;
+  border:1px solid #E5E7EB;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+.doc-row small{color:#6B7280;font-size:12px}
+.upload-box{
+  margin-top:16px;
+  border:2px dashed #E5E7EB;
+  border-radius:10px;
+  padding:18px;
+  text-align:center;
+}
+.upload-box label{
+  cursor:pointer;
+  font-weight:600;
+}
+.upload-box input{display:none}
+
+/* Time Logs */
+.timelog{
+  border-bottom:1px solid #E5E7EB;
+  padding:16px 0;
+  font-size:14px;
+  display:flex;
+  gap:12px;
+}
+.timelog strong{display:block}
+.timelog small{color:#6B7280}
+
+/* Notes */
+.note-wrap{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.note-left, .note-right{
+  max-width:70%;
+  padding:14px;
+  border-radius:12px;
+  font-size:14px;
+}
+.note-left{
+  background:#F1F5F9;
+}
+.note-right{
+  background:#E0F2FE;
+  align-self:flex-end;
+}
+.note-meta{
+  font-size:12px;
+  color:#6B7280;
+  margin-top:6px;
+}
+textarea{
+  width:100%;
+  height:80px;
+  padding:10px;
+  border:1px solid #D1D5DB;
+  border-radius:6px;
+}
+button{
+  margin-top:10px;
+  padding:10px 16px;
+  background:#0F2D56;
+  color:#fff;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* Access */
+.access-list label{
+  display:block;
+  margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-wrap">
+
+  <div class="header">Project</div>
+
+  <div class="project-header">
+    <div class="project-title">Customer Agreement</div>
+    <div class="project-meta">Project ID: 2790738 · In Progress</div>
+
+    <div class="project-grid">
+      <div class="meta-block">
+        <div class="avatar">JC</div>
+        <div>
+          <strong>Managing Attorney</strong>
+          Jessica Cahoon
+        </div>
+      </div>
+      <div class="meta-block">
+        <div class="avatar">LG</div>
+        <div>
+          <strong>Additional Attorney</strong>
+          Lindsay Germann
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('tasks')">Tasks</div>
+    <div class="tab" onclick="showTab('documents')">Documents</div>
+    <div class="tab" onclick="showTab('timelogs')">Time Logs</div>
+    <div class="tab" onclick="showTab('notes')">Notes</div>
+    <div class="tab" onclick="showTab('access')">Access</div>
+  </div>
+
+  <div class="section active" id="tasks">
+    <div class="task-row">Conduct Discovery <span class="badge completed">Completed</span></div>
+    <div class="task-row">Draft Agreement <span class="badge started">Started</span></div>
+    <div class="task-row">Write Email <span class="badge completed">Completed</span></div>
+    <div class="task-row">Conduct Interview <span class="badge queue">Queued</span></div>
+    <div class="task-row">Conduct Investigation <span class="badge queue">Queued</span></div>
+    <div class="task-row">Draft Letter <span class="badge completed">Completed</span></div>
+    <div class="task-row">Miscellaneous Task <span class="badge started">Started</span></div>
+    <div class="task-row">Make Phone Call <span class="badge completed">Completed</span></div>
+    <div class="task-row">Draft Pleadings <span class="badge paused">Paused</span></div>
+    <div class="task-row">Conduct Research <span class="badge completed">Completed</span></div>
+    <div class="task-row">Review Agreement <span class="badge started">Started</span></div>
+    <div class="task-row">Travel <span class="badge queue">Queued</span></div>
+  </div>
+
+  <div class="section" id="documents">
+    <div class="doc-row">
+      <div>
+        Customer_Agreement_Draft_2025.pdf<br>
+        <small>Uploaded Feb 26, 2025</small>
+      </div>
+      <i class="fa-regular fa-eye"></i>
+    </div>
+
+    <div class="upload-box">
+      <label>
+        <input type="file">
+        Upload a new document
+      </label>
+    </div>
+  </div>
+
+  <div class="section" id="timelogs">
+    <div class="timelog">
+      <div class="avatar">LG</div>
+      <div>
+        <strong>Task:</strong> Miscellaneous Task<br>
+        <strong>Comment:</strong> Review Employee Handbook<br>
+        <small>1 hours, 36 minutes · Mar 1, 2025 · Lindsay Germann</small>
+      </div>
+    </div>
+
+    <div class="timelog">
+      <div class="avatar">LG</div>
+      <div>
+        <strong>Task:</strong> Miscellaneous Task<br>
+        <strong>Comment:</strong> Began reviewing Employee Handbook<br>
+        <small>1 hours, 24 minutes · Feb 26, 2025 · Lindsay Germann</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="notes">
+    <div class="note-wrap">
+      <div class="note-left">
+        Began initial review of the agreement language.
+        <div class="note-meta">Lindsay Germann · Feb 26, 2025</div>
+      </div>
+
+      <div class="note-left">
+        Draft is underway; will share for review shortly.
+        <div class="note-meta">Jessica Cahoon · Feb 28, 2025</div>
+      </div>
+
+      <div class="note-right">
+        Thank you — looking forward to reviewing.
+        <div class="note-meta">You · Mar 1, 2025</div>
+      </div>
+    </div>
+
+    <br>
+    <textarea placeholder="Add a comment..."></textarea>
+    <button>Add Comment</button>
+  </div>
+
+  <div class="section" id="access">
+    <div class="access-list">
+      <label><input type="checkbox" checked> Courtney Davey</label>
+      <label><input type="checkbox"> Donna Waite</label>
+      <button>Save Access</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
