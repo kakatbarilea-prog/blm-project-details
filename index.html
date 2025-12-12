@@ -100,24 +100,16 @@ body{
 }
 .section.active{display:block}
 
-/* Tasks */
-.task-row{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
+/* Time Logs */
+.timelog{
   border-bottom:1px solid #E5E7EB;
+  padding:16px 0;
   font-size:14px;
+  display:flex;
+  gap:12px;
 }
-.badge{
-  padding:4px 10px;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:600;
-}
-.queue{background:#EEF2FF;color:#3730A3}
-.started{background:#FEF3C7;color:#92400E}
-.completed{background:#DCFCE7;color:#166534}
-.paused{background:#FEE2E2;color:#991B1B}
+.timelog strong{display:block}
+.timelog small{color:#6B7280}
 
 /* Documents */
 .doc-row{
@@ -142,17 +134,6 @@ body{
   font-weight:600;
 }
 .upload-box input{display:none}
-
-/* Time Logs */
-.timelog{
-  border-bottom:1px solid #E5E7EB;
-  padding:16px 0;
-  font-size:14px;
-  display:flex;
-  gap:12px;
-}
-.timelog strong{display:block}
-.timelog small{color:#6B7280}
 
 /* Notes */
 .note-wrap{
@@ -195,12 +176,6 @@ button{
   font-weight:600;
   cursor:pointer;
 }
-
-/* Access */
-.access-list label{
-  display:block;
-  margin-bottom:10px;
-}
 </style>
 </head>
 
@@ -232,47 +207,17 @@ button{
     </div>
   </div>
 
-  <div class="tabs">
-    <div class="tab active" onclick="showTab('tasks')">Tasks</div>
-    <div class="tab" onclick="showTab('documents')">Documents</div>
-    <div class="tab" onclick="showTab('timelogs')">Time Logs</div>
-    <div class="tab" onclick="showTab('notes')">Notes</div>
-    <div class="tab" onclick="showTab('access')">Access</div>
-  </div>
+  <!-- TABS (ONLY 3, ORDER UPDATED) -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('timelogs')">Time Logs</div>
+  <div class="tab" onclick="showTab('documents')">Documents</div>
+  <div class="tab" onclick="showTab('notes')">Notes</div>
+  <div class="tab" onclick="showTab('billing')">BLG Billing</div>
+</div>
 
-  <div class="section active" id="tasks">
-    <div class="task-row">Conduct Discovery <span class="badge completed">Completed</span></div>
-    <div class="task-row">Draft Agreement <span class="badge started">Started</span></div>
-    <div class="task-row">Write Email <span class="badge completed">Completed</span></div>
-    <div class="task-row">Conduct Interview <span class="badge queue">Queued</span></div>
-    <div class="task-row">Conduct Investigation <span class="badge queue">Queued</span></div>
-    <div class="task-row">Draft Letter <span class="badge completed">Completed</span></div>
-    <div class="task-row">Miscellaneous Task <span class="badge started">Started</span></div>
-    <div class="task-row">Make Phone Call <span class="badge completed">Completed</span></div>
-    <div class="task-row">Draft Pleadings <span class="badge paused">Paused</span></div>
-    <div class="task-row">Conduct Research <span class="badge completed">Completed</span></div>
-    <div class="task-row">Review Agreement <span class="badge started">Started</span></div>
-    <div class="task-row">Travel <span class="badge queue">Queued</span></div>
-  </div>
 
-  <div class="section" id="documents">
-    <div class="doc-row">
-      <div>
-        Customer_Agreement_Draft_2025.pdf<br>
-        <small>Uploaded Feb 26, 2025</small>
-      </div>
-      <i class="fa-regular fa-eye"></i>
-    </div>
-
-    <div class="upload-box">
-      <label>
-        <input type="file">
-        Upload a new document
-      </label>
-    </div>
-  </div>
-
-  <div class="section" id="timelogs">
+  <!-- TIME LOGS -->
+  <div class="section active" id="timelogs">
     <div class="timelog">
       <div class="avatar">LG</div>
       <div>
@@ -292,6 +237,25 @@ button{
     </div>
   </div>
 
+  <!-- DOCUMENTS -->
+  <div class="section" id="documents">
+    <div class="doc-row">
+      <div>
+        Customer_Agreement_Draft_2025.pdf<br>
+        <small>Uploaded Feb 26, 2025</small>
+      </div>
+      <i class="fa-regular fa-eye"></i>
+    </div>
+
+    <div class="upload-box">
+      <label>
+        <input type="file">
+        Upload a new document
+      </label>
+    </div>
+  </div>
+
+  <!-- NOTES -->
   <div class="section" id="notes">
     <div class="note-wrap">
       <div class="note-left">
@@ -310,18 +274,10 @@ button{
       </div>
     </div>
 
-    <br>
     <textarea placeholder="Add a comment..."></textarea>
     <button>Add Comment</button>
   </div>
-
-  <div class="section" id="access">
-    <div class="access-list">
-      <label><input type="checkbox" checked> Courtney Davey</label>
-      <label><input type="checkbox"> Donna Waite</label>
-      <button>Save Access</button>
-    </div>
-  </div>
+  
 
 </div>
 
