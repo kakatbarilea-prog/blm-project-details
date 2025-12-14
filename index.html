@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Project – Contact View</title>
+<title>Matter Dashboard – Customer Agreement</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -17,8 +17,8 @@ body{
   max-width:1200px;
   margin:30px auto;
   background:#fff;
-  border-radius:8px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  border-radius:10px;
+  box-shadow:0 12px 32px rgba(0,0,0,.08);
   overflow:hidden;
 }
 
@@ -26,52 +26,78 @@ body{
 .header{
   background:#17345C;
   color:#fff;
-  padding:18px;
+  padding:20px;
   font-size:18px;
   font-weight:600;
   text-align:center;
 }
 
-/* Project Header */
-.project-header{
-  padding:24px 28px;
+/* Overview */
+.overview{
+  padding:28px;
   border-bottom:1px solid #E5E7EB;
 }
-.project-title{
+.overview-title{
   font-size:22px;
   font-weight:700;
 }
-.project-meta{
+.overview-desc{
   font-size:14px;
   color:#6B7280;
-  margin-top:4px;
+  margin-top:6px;
+  max-width:760px;
 }
-.project-grid{
+
+/* Metrics */
+.metrics{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin-top:18px;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:22px;
 }
-.meta-block{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.metric{
+  background:#FAFBFC;
+  border:1px solid #E5E7EB;
+  border-radius:12px;
+  padding:18px;
 }
-.meta-block strong{
+.metric strong{
   display:block;
+  font-size:20px;
+}
+.metric span{
   font-size:13px;
-  color:#000;
+  color:#6B7280;
+}
+
+/* Attorneys */
+.attorneys{
+  display:flex;
+  gap:28px;
+  margin-top:22px;
+}
+.attorney{
+  display:flex;
+  gap:12px;
+  align-items:center;
 }
 .avatar{
-  width:36px;
-  height:36px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   background:#CBD5E1;
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:700;
-  color:#17345C;
+}
+.attorney-meta{
+  font-size:13px;
+  color:#6B7280;
+}
+.attorney-name{
+  font-weight:700;
+  color:#0F2D56;
 }
 
 /* Tabs */
@@ -96,19 +122,17 @@ body{
 /* Sections */
 .section{
   display:none;
-  padding:24px 28px;
+  padding:28px;
 }
 .section.active{display:block}
 
 /* Time Logs */
 .timelog{
   border-bottom:1px solid #E5E7EB;
-  padding:16px 0;
-  font-size:14px;
+  padding:18px 0;
   display:flex;
   gap:12px;
 }
-.timelog strong{display:block}
 .timelog small{color:#6B7280}
 
 /* Documents */
@@ -116,10 +140,10 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:flex-start;
-  padding:12px;
+  padding:14px;
   border:1px solid #E5E7EB;
-  border-radius:8px;
-  margin-bottom:10px;
+  border-radius:10px;
+  margin-bottom:12px;
 }
 .doc-row small{color:#6B7280;font-size:12px}
 .upload-box{
@@ -144,12 +168,9 @@ body{
 .note-left, .note-right{
   max-width:70%;
   padding:14px;
-  border-radius:12px;
-  font-size:14px;
+  border-radius:14px;
 }
-.note-left{
-  background:#F1F5F9;
-}
+.note-left{background:#F1F5F9}
 .note-right{
   background:#E0F2FE;
   align-self:flex-end;
@@ -159,34 +180,16 @@ body{
   color:#6B7280;
   margin-top:6px;
 }
-textarea{
-  width:100%;
-  height:80px;
-  padding:10px;
-  border:1px solid #D1D5DB;
-  border-radius:6px;
-}
-button{
-  margin-top:10px;
-  padding:10px 16px;
-  background:#0F2D56;
-  color:#fff;
-  border:none;
-  border-radius:6px;
-  font-weight:600;
-  cursor:pointer;
-}
-.badge-recent {
-  background: #22c55e;
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 999px;
-  margin-left: 6px;
-  vertical-align: middle;
-}
 
+.badge-recent{
+  background:#22c55e;
+  color:#fff;
+  font-size:11px;
+  font-weight:600;
+  padding:2px 8px;
+  border-radius:999px;
+  margin-left:6px;
+}
 </style>
 </head>
 
@@ -194,38 +197,45 @@ button{
 
 <div class="page-wrap">
 
-  <div class="header">Project: Miscellaneous Legal Work</div>
+  <div class="header">Matter Dashboard</div>
 
-  <div class="project-header">
-    <div class="project-title">Matter: Customer Agreement</div>
-    <div class="project-meta">Project ID: 2790738 · In Progress</div>
+  <div class="overview">
+    <div class="overview-title">Customer Agreement</div>
+    <div class="overview-desc">
+      Drafting, revising, and finalizing a customer agreement tailored to the client’s
+      operational needs, compliance requirements, and negotiated commercial terms.
+    </div>
 
-    <div class="project-grid">
-      <div class="meta-block">
+    <div class="metrics">
+      <div class="metric"><strong>3h 00m</strong><span>Total Time Logged</span></div>
+      <div class="metric"><strong>12</strong><span>Configured Tasks</span></div>
+      <div class="metric"><strong>4</strong><span>Documents Uploaded</span></div>
+      <div class="metric"><strong>Mar 26, 2025</strong><span>Last Activity</span></div>
+    </div>
+
+    <div class="attorneys">
+      <div class="attorney">
         <div class="avatar">JC</div>
         <div>
-          <strong>Managing Attorney</strong>
-          Jessica Cahoon
+          <div class="attorney-meta">Managing Attorney</div>
+          <div class="attorney-name">Jessica Cahoon</div>
         </div>
       </div>
-      <div class="meta-block">
+      <div class="attorney">
         <div class="avatar">LG</div>
         <div>
-          <strong>Additional Attorney</strong>
-          Lindsay Germann
+          <div class="attorney-meta">Additional Attorney</div>
+          <div class="attorney-name">Lindsay Germann</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- TABS (ONLY 3, ORDER UPDATED) -->
-<div class="tabs">
-  <div class="tab active" onclick="showTab('timelogs')">Time Logs</div>
-  <div class="tab" onclick="showTab('documents')">Documents</div>
-  <div class="tab" onclick="showTab('notes')">Notes</div>
-  <div class="tab" onclick="showTab('billing')">BLG Billing</div>
-</div>
-
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('timelogs')">Time Logs</div>
+    <div class="tab" onclick="showTab('documents')">Documents</div>
+    <div class="tab" onclick="showTab('notes')">Notes</div>
+  </div>
 
   <!-- TIME LOGS -->
   <div class="section active" id="timelogs">
@@ -234,70 +244,58 @@ button{
       <div>
         <strong>Task:</strong> Miscellaneous Task<br>
         <strong>Comment:</strong> Review Employee Handbook<br>
-        <small>1 hours, 36 minutes · Mar 1, 2025 · Lindsay Germann</small>
+        <small>1h 36m · Mar 1, 2025 · Lindsay Germann</small>
       </div>
     </div>
-
     <div class="timelog">
       <div class="avatar">LG</div>
       <div>
         <strong>Task:</strong> Miscellaneous Task<br>
         <strong>Comment:</strong> Began reviewing Employee Handbook<br>
-        <small>1 hours, 24 minutes · Feb 26, 2025 · Lindsay Germann</small>
+        <small>1h 24m · Feb 26, 2025 · Lindsay Germann</small>
       </div>
     </div>
   </div>
 
   <!-- DOCUMENTS -->
   <div class="section" id="documents">
+
     <div class="doc-row">
-  <div>
-    Customer_Agreement_Draft_1.pdf<br>
-    <small>Uploaded Feb 21, 2025</small><br>
-    <small style="color:#6B7280;">
-      Initial draft based on intake details and prior agreement.
-    </small>
-  </div>
-  <i class="fa-regular fa-eye"></i>
-</div>
+      <div>
+        Customer_Agreement_Draft_1.pdf<br>
+        <small>Uploaded Feb 21, 2025</small><br>
+        <small>Initial draft based on intake details and prior agreement.</small>
+      </div>
+      <i class="fa-regular fa-eye"></i>
+    </div>
 
-    
-<div class="doc-row">
-  <div>
-    Customer_Agreement_Draft_2.pdf<br>
-    <small>Uploaded Feb 26, 2025</small><br>
-    <small style="color:#6B7280;">
-      Revised to reflect internal legal review and compliance updates.
-    </small>
-  </div>
-  <i class="fa-regular fa-eye"></i>
-</div>
+    <div class="doc-row">
+      <div>
+        Customer_Agreement_Draft_2.pdf<br>
+        <small>Uploaded Feb 26, 2025</small><br>
+        <small>Revised to reflect internal legal review and compliance updates.</small>
+      </div>
+      <i class="fa-regular fa-eye"></i>
+    </div>
 
+    <div class="doc-row">
+      <div>
+        Customer_Agreement_Draft_3.pdf<br>
+        <small>Uploaded Mar 6, 2025</small><br>
+        <small>Updated with negotiated terms and clarified termination language.</small>
+      </div>
+      <i class="fa-regular fa-eye"></i>
+    </div>
 
-  <div class="doc-row">
-  <div>
-    Customer_Agreement_Draft_3.pdf<br>
-    <small>Uploaded Mar 6, 2025</small><br>
-    <small style="color:#6B7280;">
-      Updated with negotiated terms and clarified termination language.
-    </small>
-  </div>
-  <i class="fa-regular fa-eye"></i>
-</div>
-
-<div class="doc-row">
-  <div>
-    Customer_Agreement_Draft_4.pdf
-    <span class="badge-recent">Recently Uploaded</span><br>
-    <small>Uploaded Mar 26, 2025</small><br>
-    <small style="color:#6B7280;">
-      Latest working version incorporating final client feedback.
-    </small>
-  </div>
-  <i class="fa-regular fa-eye"></i>
-</div>
-
-
+    <div class="doc-row">
+      <div>
+        Customer_Agreement_Draft_4.pdf
+        <span class="badge-recent">Recently Uploaded</span><br>
+        <small>Uploaded Mar 26, 2025</small><br>
+        <small>Latest working version incorporating final client feedback.</small>
+      </div>
+      <i class="fa-regular fa-eye"></i>
+    </div>
 
     <div class="upload-box">
       <label>
@@ -305,31 +303,22 @@ button{
         Upload a new document
       </label>
     </div>
+
   </div>
 
   <!-- NOTES -->
   <div class="section" id="notes">
     <div class="note-wrap">
       <div class="note-left">
-        Began initial review of the agreement language.
-        <div class="note-meta">Lindsay Germann · Feb 26, 2025</div>
-      </div>
-
-      <div class="note-left">
         Draft is underway; will share for review shortly.
         <div class="note-meta">Jessica Cahoon · Feb 28, 2025</div>
       </div>
-
       <div class="note-right">
         Thank you — looking forward to reviewing.
         <div class="note-meta">You · Mar 1, 2025</div>
       </div>
     </div>
-
-    <textarea placeholder="Add a comment..."></textarea>
-    <button>Add Comment</button>
   </div>
-  
 
 </div>
 
